@@ -11,14 +11,20 @@ function Login() {
   });
 
   const handleChange = (e) => {
-    setForm({ ...form, [e.target.name]: e.target.value });
+    setForm({
+      ...form,
+      [e.target.name]: e.target.value
+    });
   };
 
   const submitForm = async (e) => {
     e.preventDefault();
 
     try {
-      const res = await axios.post("http://localhost:5000/api/login", form);
+      const res = await axios.post(
+        "https://student-auth-system-practice.onrender.com/api/login",
+        form
+      );
 
       localStorage.setItem("token", res.data.token);
 
@@ -34,10 +40,27 @@ function Login() {
       <h2>Login</h2>
 
       <form onSubmit={submitForm}>
-        <input className="form-control mb-2" type="email" name="email" placeholder="Email" onChange={handleChange} required />
-        <input className="form-control mb-2" type="password" name="password" placeholder="Password" onChange={handleChange} required />
+        <input
+          className="form-control mb-2"
+          type="email"
+          name="email"
+          placeholder="Email"
+          onChange={handleChange}
+          required
+        />
 
-        <button className="btn btn-success w-100">Login</button>
+        <input
+          className="form-control mb-2"
+          type="password"
+          name="password"
+          placeholder="Password"
+          onChange={handleChange}
+          required
+        />
+
+        <button className="btn btn-success w-100">
+          Login
+        </button>
       </form>
 
       <p className="mt-3 text-center">

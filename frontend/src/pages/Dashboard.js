@@ -24,12 +24,14 @@ function Dashboard() {
 
   const fetchDashboard = async () => {
     try {
-      const res = await axios.get("http://localhost:5000/api/dashboard", {
-        headers: { Authorization: token }
-      });
+      const res = await axios.get(
+        "https://student-auth-system-practice.onrender.com/api/dashboard",
+        {
+          headers: { Authorization: token }
+        }
+      );
 
       setStudent(res.data);
-
     } catch {
       navigate("/login");
     }
@@ -37,9 +39,11 @@ function Dashboard() {
 
   const updateCourse = async () => {
     await axios.put(
-      "http://localhost:5000/api/update-course",
+      "https://student-auth-system-practice.onrender.com/api/update-course",
       { course },
-      { headers: { Authorization: token } }
+      {
+        headers: { Authorization: token }
+      }
     );
 
     alert("Course Updated");
@@ -48,9 +52,11 @@ function Dashboard() {
 
   const updatePassword = async () => {
     await axios.put(
-      "http://localhost:5000/api/update-password",
+      "https://student-auth-system-practice.onrender.com/api/update-password",
       passwords,
-      { headers: { Authorization: token } }
+      {
+        headers: { Authorization: token }
+      }
     );
 
     alert("Password Updated");
@@ -77,7 +83,10 @@ function Dashboard() {
         onChange={(e) => setCourse(e.target.value)}
       />
 
-      <button className="btn btn-warning w-100 mb-3" onClick={updateCourse}>
+      <button
+        className="btn btn-warning w-100 mb-3"
+        onClick={updateCourse}
+      >
         Update Course
       </button>
 
@@ -86,7 +95,10 @@ function Dashboard() {
         type="password"
         placeholder="Old Password"
         onChange={(e) =>
-          setPasswords({ ...passwords, oldPassword: e.target.value })
+          setPasswords({
+            ...passwords,
+            oldPassword: e.target.value
+          })
         }
       />
 
@@ -95,15 +107,24 @@ function Dashboard() {
         type="password"
         placeholder="New Password"
         onChange={(e) =>
-          setPasswords({ ...passwords, newPassword: e.target.value })
+          setPasswords({
+            ...passwords,
+            newPassword: e.target.value
+          })
         }
       />
 
-      <button className="btn btn-info w-100 mb-3" onClick={updatePassword}>
+      <button
+        className="btn btn-info w-100 mb-3"
+        onClick={updatePassword}
+      >
         Update Password
       </button>
 
-      <button className="btn btn-danger w-100" onClick={logout}>
+      <button
+        className="btn btn-danger w-100"
+        onClick={logout}
+      >
         Logout
       </button>
     </div>
