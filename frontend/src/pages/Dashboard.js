@@ -17,10 +17,10 @@ function Dashboard() {
   useEffect(() => {
     if (!token) {
       navigate("/login");
+    } else {
+      fetchDashboard();
     }
-
-    fetchDashboard();
-  }, []);
+  }, [token, navigate]);
 
   const fetchDashboard = async () => {
     try {
